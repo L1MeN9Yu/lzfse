@@ -1,5 +1,5 @@
+cmake_minimum_required(VERSION 3.24)
 project(lzfse C)
-cmake_minimum_required(VERSION 2.8.6)
 
 include(CheckCCompilerFlag)
 
@@ -65,6 +65,8 @@ add_library(lzfse
   src/lzfse_fse.c
   src/lzvn_decode_base.c
   src/lzvn_encode_base.c)
+add_library(lzfse::lzfse ALIAS lzfse)
+target_include_directories(lzfse PUBLIC src)
 lzfse_add_compiler_flags(lzfse -Wall -Wno-unknown-pragmas -Wno-unused-variable)
 
 add_executable(lzfse_cli
